@@ -38,10 +38,18 @@ Results
 -------
 
 <center class="half">
-<img src="Doc/result.gif" width="700"/>
+<img src="Doc/result_0.gif" width="600"/>
+</center>
+<center class="half">
+<img src="Doc/result_1.gif" width="600"/>
+</center>
+<center class="half">
+<img src="Doc/result_2.gif" width="600"/>
 </center>
 
-Currently, I have create a GUI and a corresponding pipeline to communicate with ChatGPT, fetch the feedback and execute the generated code. Since I am still working on the access to OpenAI API, we can only use a "dummy" ChatGPT instead, which can only recognize the specific tasks that are hard coded as simple examples.
+Currently, a beautiful GUI and a corresponding pipeline to communicate with ChatGPT, fetch the feedback and execute the generated code have been created. Since I am still working on the access to OpenAI API, we can only use a "dummy" ChatGPT instead, which can only recognize the specific tasks that are hard coded as simple examples.
+
+I am also working on other more powerful robots that shown in last two gif. I have successfully converted the code from C to Python to fit OpenAI API.
 
 Reference
 ---------
