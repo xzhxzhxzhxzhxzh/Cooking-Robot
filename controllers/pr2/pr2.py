@@ -11,8 +11,8 @@ MAX_WHEEL_SPEED = 3.0       # Maximum velocity for the wheels [rad / s]
 WHEELS_DISTANCE = 0.4492    # Distance between 2 caster wheels (the four wheels are located in square) [m]
 SUB_WHEELS_DISTANCE = 0.098 # Distance between 2 sub wheels of a caster wheel [m]
 WHEEL_RADIUS = 0.08         # Wheel radius
-TOLERANCE_1 = 0.01
-TOLERANCE_2 = 0.002
+TOLERANCE_1 = 0.006
+TOLERANCE_2 = 0.0015
 
 def ALM_EQUAL_1(a, b) -> bool:
     return (a < b + TOLERANCE_1) and (a > b - TOLERANCE_1)
@@ -351,7 +351,7 @@ class PR2():
         motors have reached their target positions.
         """
         pos = [fl, fr, bl, br]
-        print ("rotation")
+
         if wait_on_feedback:
             self.set_wheels_speed(0)
             torques = self.enable_passive_wheels(True, np.zeros(8))
@@ -420,7 +420,7 @@ class PR2():
         self.set_wheels_speed(max_wheel_speed)
 
         initial_wheel0_position = self.wheel_sensors[0].getValue()
-        
+
         while True:
             wheel0_position = self.wheel_sensors[0].getValue()
             # Travel distance done by the wheel
@@ -437,7 +437,7 @@ class PR2():
                 break
 
         self.set_wheels_speed(0.0)
-        
+
     def set_gripper(self, gripper_inx: int, open: bool, torque_when_gripping: float,
                     wait_on_feedback: bool,target_open_value:float) -> None:
         """
@@ -539,31 +539,25 @@ class PR2():
         Set the torso height
         If wait_on_feedback is enabled, the function is left when the target is reached.
         """
-        base_height = 0.78
+
         print('env.rb_height:', self.env.rb_height)
         print('height:', height)
 
-        h_diff = height - base_height
-        print('h_diff:', h_diff) 
-        if h_diff < 0.005:          
-            self.env.rb_height = base_height
-        # else:
-            # h_diff = height - base_height
+        h_diff = height - self.env.rb_height 
+        if h_diff < 0:          
+            h_diff = height - 0.78
+        elif h_diff >= 0 and h_diff < 0.01:
+            h_diff = self.torso_sensor[0].getValue()  
+
         # h_diff = np.clip(h_diff, 0, 0.33)
-                # keep the same height
-        # elif 0 <= h_diff and h_diff < 0.005:
-            # h_diff = self.torso_sensor[0].getValue() #last h_diff
-            # self.env.rb_height = base_height
         self.torso_motor[0].setPosition(h_diff)
         
+        print('h_diff:', h_diff)
         if wait_on_feedback:
             while not ALM_EQUAL_2(self.torso_sensor[0].getValue(), h_diff):
                 if self.supervisor.step(TIME_STEP) == -1:
                     break
-        print("torso_sensor:", self.torso_sensor[0].getValue()) 
         self.env.rb_height = self.env.rb_height + self.torso_sensor[0].getValue()         
-            
-        print('env.rb_height:', self.env.rb_height)
 
     def set_initial_arm_position(self) -> None:
         """Convenient initial position"""
@@ -595,14 +589,14 @@ class PR2():
         curr_pos = self.get_position()
         self.robot_go_forward(target_pos[0] - curr_pos[0])
 
-    def grab_object(self, object_name: str) -> None:
+    def grab_object(self, object_hand: str) -> None:
         """
         grab the objects from the table A
         """
-        if object_name == "left":
+        if object_hand == "left":
             arm = 0
             gripper = 0
-        elif object_name == "right":
+        elif object_hand == "right":
             arm = 1
             gripper = 1
         else:
@@ -622,7 +616,7 @@ class PR2():
         self.set_rotation_wheels_angles(0, 0, 0, 0, True)
         if go_to_take:
             self.robot_go_forward(init_pos[0] - curr_pos[0])
-            LOG("true go_to_take x")
+
         else:
             self.robot_go_forward(init_pos[0] + curr_pos[0])
         
@@ -632,7 +626,7 @@ class PR2():
         
         if go_to_take:
             self.robot_go_forward(init_pos[1] - curr_pos[1])
-            LOG("true go_to_take y")
+
         else:
             self.robot_go_forward(init_pos[1] + curr_pos[1])
 
@@ -651,7 +645,6 @@ class PR2():
 
         self.set_arm_position(0, 0, 0, 0, 1.57, True, arm)
         #self.set_arm_position(0.0, 0.55, 0.0, -0.52, 1.57, False, arm)
-        print('open gripper')
         self.set_gripper(gripper, True, 0, True, 0.2)
 
     def take(self, target_hand: str, target_obj: str) -> None:
@@ -673,11 +666,8 @@ class PR2():
     def put(self, target_hand: str, target_obj: str="hamburger") -> None:
         assert target_obj == "hamburger", "Can only put hamburger"
         assert target_hand in ['left', 'right'], "Unknown target hand"
-        if target_hand == 'left':
-            gripper = 0
-        elif target_hand == 'right':
-            gripper = 1
-        LOG("put -> get_rb_target_pos")
+   
+        LOG("take -> DONE")
         target_pos = self.env.get_rb_target_pos(target_obj, target_hand)
         LOG("put -> move_to_object_location")
         self.move_to_object_location(target_pos)
@@ -687,9 +677,9 @@ class PR2():
         self.move_to_initial_position(go_to_take=False)
         LOG("put -> update_ingredients")
         self.env.update_ingredients(target_obj)
-        LOG("put -> set_gripper")
-        self.set_gripper(gripper, True, 0, False, 0.2)
         LOG("put -> DONE")
+        # self.set_initial_arm_position()
+        # LOG("arm initial")
         
     def rotate_180(self) -> None:
         
@@ -711,36 +701,47 @@ if __name__ == "__main__":
                    rb_pos_beef=np.array([0.4, 0.06, 0.76]),
                    rb_pos_cheese=np.array([0.4, -0.3, 0.76]),
                    rb_pos_tomato=np.array([0.4, -0.66, 0.76]),
-                   rb_pos_hamburger=np.array([0.4, 0, 0.84]),
+                   rb_pos_hamburger=np.array([0.4, -0.1, 0.84]),
                    offset_hor=0.20,
                    offset_ver=0.04)
     pr2 = PR2(robot, env)
     pr2.set_initial_arm_position()
     
     # Loop starts
-    
-    # ingredients = ['bread','beef','lettuce','cheese','bread']
-    # for object in ingredients:
-    
-        # pr2.take(target_hand='left', target_obj=object)
-        # pr2.rotate_180()
-        # pr2.put(target_hand='left')
-        # pr2.rotate_180()
-        # pr2.move_to_initial_position(go_to_take = True) 
-    pr2.take(target_hand='left', target_obj='lettuce')
-    pr2.take(target_hand='right', target_obj='cheese')
-    pr2.rotate_180()
+
+    from initial_prompt_for_chatGPT import env_example, intitial_prompts
+    from GUI import GUI
+
+    def take(target_hand: str, target_obj: str):
+        pr2.take(target_hand, target_obj)
+        
+    def put(target_hand: str, target_obj: str="hamburger"):
+        pr2.put(target_hand, target_obj)
+        
+    def rotate_180():
+        pr2.rotate_180()
+        
+    def execute_order_66(env):
+        prompts,instructions = intitial_prompts(env)
+        chatGPT_response = GUI(prompts,instructions)
+
+        for cur_task in chatGPT_response["task_cohesion"]["task_sequence"]:
+            exec(cur_task)
+
+    def begin():
+        env = env_example()
+        execute_order_66(env)
+
+    begin()
+
+    """pr2.take(target_hand='right', target_obj= 'bread')
+    pr2.take(target_hand='left', target_obj='cheese')
+    pr2.rotate_180()    
     pr2.put(target_hand='right')
     pr2.put(target_hand='left')
     pr2.rotate_180()
     pr2.move_to_initial_position(go_to_take = True)
 
-    # pr2.take(target_hand='left', target_obj='cheese')
-    # pr2.rotate_180()
-    # pr2.put(target_hand='left')
-    # pr2.rotate_180()
-    # pr2.move_to_initial_position(go_to_take = True)
-     
     pr2.take(target_hand='right', target_obj='beef')
     pr2.take(target_hand='left', target_obj='tomato')
     pr2.rotate_180()
@@ -749,14 +750,8 @@ if __name__ == "__main__":
     pr2.rotate_180()
     pr2.move_to_initial_position(go_to_take = True)
     
-    # pr2.take(target_hand='left', target_obj='tomato')
-    # pr2.rotate_180()
-    # pr2.put(target_hand='left')
-    # pr2.rotate_180()
-    # pr2.move_to_initial_position(go_to_take = True)
-    
     pr2.take(target_hand='right', target_obj='bread')
     pr2.rotate_180()
     pr2.put(target_hand='right')
     pr2.rotate_180()
-    pr2.move_to_initial_position(go_to_take = True)
+    pr2.move_to_initial_position(go_to_take = True)"""

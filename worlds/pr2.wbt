@@ -2,11 +2,15 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/tables/protos/Table.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/clearpath/pr2/protos/Pr2.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/chairs/protos/WoodenChair.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/kitchen/utensils/protos/Fork.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/kitchen/utensils/protos/Knife.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/kitchen/utensils/protos/Plate.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/drinks/protos/Can.proto"
 
 WorldInfo {
   info [
@@ -23,12 +27,18 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.2451656563598937 -0.15666493931711092 0.9567392004775326 4.122287140872018
-  position 2.3097521104140895 2.5766878598392675 2.9060476031248865
+  orientation 0.22161932966265077 0.6520977165126797 -0.725019614106285 0.8766672999289621
+  position -0.672244949058229 1.7995649442556638 2.6012093965203404
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+}
+Floor {
+  tileSize 1 1
+  appearance Parquetry {
+    type "light strip"
+  }
 }
 Solid {
   translation -1.490000001941417 0.06000000000000107 0.8035285010450037
@@ -44,8 +54,6 @@ Solid {
   boundingObject USE table_mat
   physics Physics {
   }
-  linearVelocity -1.359877211188327e-11 1.9319449903544072e-17 -4.982813682124671e-09
-  angularVelocity -4.502449019472094e-16 -8.019530986754244e-13 -3.0941900050511553e-18
 }
 Table {
   translation 1.55 -1.4273e-22 2.77556e-17
@@ -53,8 +61,8 @@ Table {
   size 1 3 0.78
 }
 Solid {
-  translation 1.4399077740965365 0.4200060001086512 0.7998328274993902
-  rotation 0.35306823360073136 -0.9355879105790446 0.004252528706183952 0.0010507740384879253
+  translation 1.4399077740965365 0.4200060001086513 0.7998328274993902
+  rotation 0.3530682336005966 -0.9355879105790957 0.004252528706137813 0.00105077403849038
   children [
     DEF Vegetable Group {
       children [
@@ -63,6 +71,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0 1 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/lettuce.jpg"
+                  ]
+                }
                 roughness 0.2
                 metalness 0.2
               }
@@ -76,6 +89,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0 1 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/lettuce.jpg"
+              ]
+            }
             roughness 0.2
             metalness 0.2
           }
@@ -92,12 +110,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity 4.8906767522913336e-06 3.2097386297215562e-06 -2.033999117274708e-05
-  angularVelocity -0.0001619868624904244 0.0002468191690869376 1.1244343218680896e-11
 }
 Solid {
-  translation 1.4399739380800185 0.4199924774709879 0.8396309656811279
-  rotation 0.3459921194577529 -0.9382294370160053 0.0038699857573396335 0.0010231134950315897
+  translation 1.4399739380800185 0.4199924774709878 0.8396309656811279
+  rotation 0.3459921194574949 -0.9382294370161004 0.0038699857572974707 0.0010231134950340142
   children [
     DEF Vegetable Group {
       children [
@@ -106,6 +122,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0 1 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/lettuce.jpg"
+                  ]
+                }
                 roughness 0.2
                 metalness 0.2
               }
@@ -119,6 +140,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0 1 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/lettuce.jpg"
+              ]
+            }
             roughness 0.2
             metalness 0.2
           }
@@ -135,12 +161,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity 1.4636140886218934e-05 9.612653412358602e-06 -2.030997132932181e-05
-  angularVelocity -0.00016038199885397373 0.0002443729586257653 2.6301656585158725e-09
 }
 Solid {
-  translation 1.439940525144592 0.41997946232616146 0.8794693947860655
-  rotation 0.33695313019332424 -0.9415143961844804 0.003637283367298234 0.000996100181962171
+  translation 1.4399405251445918 0.41997946232616157 0.8794693947860655
+  rotation 0.3369531301927553 -0.9415143961846839 0.003637283367295265 0.0009961001819645617
   children [
     DEF Vegetable Group {
       children [
@@ -149,6 +173,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0 1 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/lettuce.jpg"
+                  ]
+                }
                 roughness 0.2
                 metalness 0.2
               }
@@ -162,6 +191,8 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0 1 0.2
+            baseColorMap ImageTexture {
+            }
             roughness 0.2
             metalness 0.2
           }
@@ -178,12 +209,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity 2.4312561780810222e-05 1.596892494282484e-05 -2.026597278502083e-05
-  angularVelocity -0.00015919367542463898 0.00024256413299930145 4.533265434447957e-09
 }
 Solid {
-  translation 1.4398953712492597 0.4199565392779039 0.9193481977082772
-  rotation 0.32702114942148974 -0.9449613494608824 -0.010257478058255054 0.0009662575995645671
+  translation 1.439895371249259 0.4199565392779036 0.9193481977082772
+  rotation 0.3270211494212397 -0.9449613494609693 -0.010257478058220186 0.0009662575995669162
   children [
     DEF Vegetable Group {
       children [
@@ -192,6 +221,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0 1 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/lettuce.jpg"
+                  ]
+                }
                 roughness 0.2
                 metalness 0.2
               }
@@ -205,6 +239,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0 1 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/lettuce.jpg"
+              ]
+            }
             roughness 0.2
             metalness 0.2
           }
@@ -221,12 +260,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity 3.394502487078397e-05 2.2294961434152455e-05 -2.023406696796149e-05
-  angularVelocity -0.00015841493302906127 0.00024137727835263007 5.775676870404059e-09
 }
 Solid {
-  translation 1.4409268291315065 0.42067606317080514 0.9592686024157687
-  rotation 0.32189192389239174 -0.9467262499918362 -0.009746635791376655 0.0009544914227224385
+  translation 1.4409268291315063 0.42067606317080497 0.9592686024157687
+  rotation 0.3218919238921707 -0.9467262499919109 -0.009746635791451947 0.0009544914227247286
   children [
     DEF Vegetable Group {
       children [
@@ -235,6 +272,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0 1 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/lettuce.jpg"
+                  ]
+                }
                 roughness 0.2
                 metalness 0.2
               }
@@ -248,6 +290,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0 1 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/lettuce.jpg"
+              ]
+            }
             roughness 0.2
             metalness 0.2
           }
@@ -264,12 +311,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity 4.3553016028364685e-05 2.8603471057945248e-05 -2.057915871703145e-05
-  angularVelocity -0.00015790258303990888 0.000240600345927337 6.355238567247525e-09
 }
 Solid {
-  translation 1.4404854320436065 0.42049759338805764 0.9992277785926325
-  rotation 0.3221501757254428 -0.9466210776820891 -0.011304847104969592 0.0009586163660136355
+  translation 1.4404854320436062 0.42049759338805787 0.9992277785926325
+  rotation 0.32215017572551125 -0.9466210776820653 -0.011304847105004484 0.0009586163660160908
   children [
     DEF Vegetable Group {
       children [
@@ -278,6 +323,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0 1 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/lettuce.jpg"
+                  ]
+                }
                 roughness 0.2
                 metalness 0.2
               }
@@ -291,6 +341,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0 1 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/lettuce.jpg"
+              ]
+            }
             roughness 0.2
             metalness 0.2
           }
@@ -307,8 +362,6 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity 5.3155837599065324e-05 3.490711054710258e-05 -2.0436459292831583e-05
-  angularVelocity -0.00015773611059346595 0.00024034643088533035 6.420365975576008e-09
 }
 Table {
   translation -1.5 1.64857e-19 2.77556e-17
@@ -316,9 +369,13 @@ Table {
   name "table 2"
   size 1 3 0.78
 }
+Plate {
+  translation -1.8300000001835184 0.05000000000000011 0.7799705506430842
+  rotation 0.021354725025680667 -0.9997719617561645 -1.4328578328905799e-05 8.722387643882291e-14
+}
 Solid {
-  translation 1.4399988763120977 0.7800038505515207 0.7997742972105369
-  rotation -0.6480612460737146 -0.7615779988698049 -0.003946260869158542 0.0002677872529738058
+  translation 1.4399988763120977 0.7800038505515209 0.7997742972105368
+  rotation -0.6480612460693721 -0.7615779988735006 -0.003946260869131303 0.00026778725297427273
   children [
     DEF Bread_up Group {
       children [
@@ -327,6 +384,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.8 0.4 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/bread.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -340,6 +402,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.8 0.4 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/bread.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -358,12 +425,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -6.1215183936986725e-06 3.639604865233718e-06 2.5801415875503633e-05
-  angularVelocity -0.0001842353834347121 -0.00030986863285959425 6.700932697444037e-12
 }
 Solid {
-  translation 1.4400558696645942 0.7800118939645876 0.8395723321853528
-  rotation -0.6283100327633472 -0.7779583086748811 -0.0027152702701677875 0.00030429738233352614
+  translation 1.440055869664594 0.7800118939645875 0.8395723321853527
+  rotation -0.6283100327594953 -0.7779583086779919 -0.0027152702701887 0.0003042973823339191
   children [
     DEF Bread_up Group {
       children [
@@ -372,6 +437,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.8 0.4 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/bread.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -385,6 +455,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.8 0.4 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/bread.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -403,12 +478,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -1.816386389442682e-05 1.080079338262876e-05 2.567508043092138e-05
-  angularVelocity -0.00017558195874424834 -0.00029531177929750617 6.772457877218113e-09
 }
 Solid {
   translation 1.4400952621612813 0.780019025359166 0.8794107626488793
-  rotation -0.606146528145312 -0.7953299016352101 -0.0060608565658144395 0.00034411858925877846
+  rotation -0.6061465281418198 -0.7953299016378711 -0.006060856565914697 0.00034411858925896267
   children [
     DEF Bread_up Group {
       children [
@@ -417,6 +490,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.8 0.4 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/bread.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -430,6 +508,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.8 0.4 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/bread.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -448,12 +531,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -2.9712398515063705e-05 1.766798097925628e-05 2.5563538088856444e-05
-  angularVelocity -0.00016911889498046596 -0.0002844486249682869 1.0471250915289185e-08
 }
 Solid {
-  translation 1.4391572515575564 0.7803711418389246 0.9192892379127076
-  rotation -0.5991822706863245 -0.7976194638299604 -0.06916500137198398 0.00036278211823728435
+  translation 1.439157251557556 0.7803711418389244 0.9192892379127076
+  rotation -0.5991822706828193 -0.797619463832602 -0.06916500137188991 0.0003627821182374928
   children [
     DEF Bread_up Group {
       children [
@@ -462,6 +543,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.8 0.4 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/bread.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -475,6 +561,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.8 0.4 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/bread.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -493,12 +584,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -4.0908179848997425e-05 2.4325467341371583e-05 2.512005010532082e-05
-  angularVelocity -0.00016476092864842223 -0.000277088505277702 9.280627906647772e-09
 }
 Solid {
-  translation 1.4393515871403388 0.7803805259111772 0.9592085022374791
-  rotation -0.6048373547955882 -0.7933120907000522 -0.06948165940007382 0.00035950009566752735
+  translation 1.4393515871403386 0.7803805259111772 0.959208502237479
+  rotation -0.6048373547920636 -0.7933120907027461 -0.06948165939999837 0.0003595000956676971
   children [
     DEF Bread_up Group {
       children [
@@ -507,6 +596,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.8 0.4 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/bread.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -520,6 +614,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.8 0.4 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/bread.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -538,12 +637,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -5.189523403923288e-05 3.085912357491914e-05 2.5090440670267372e-05
-  angularVelocity -0.00016258351659180433 -0.00027341520431967343 9.871480308247906e-09
 }
 Solid {
-  translation 1.4393860178270468 0.7803889265886532 0.9991681167688119
-  rotation -0.6053723430859403 -0.7929002008428435 -0.0695240802169802 0.0003591852381633351
+  translation 1.4393860178270468 0.7803889265886528 0.9991681167688119
+  rotation -0.6053723430825216 -0.7929002008454584 -0.06952408021692522 0.0003591852381635241
   children [
     DEF Bread_up Group {
       children [
@@ -552,6 +649,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.8 0.4 0.2
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/bread.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -565,6 +667,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.8 0.4 0.2
+            baseColorMap ImageTexture {
+              url [
+                "textures/bread.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -583,12 +690,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -6.279752303498892e-05 3.734230658287515e-05 2.5057706107313378e-05
-  angularVelocity -0.00016190931539738774 -0.00027228057304608537 9.932699389341557e-09
 }
 Solid {
-  translation 1.4400001311220216 0.05996239559655426 0.799896828741632
-  rotation 0.9999928325574463 -0.003781824883150246 -0.00018064962953377064 0.001871524901675389
+  translation 1.4400003590535346 0.05996139808311853 0.7999005692026523
+  rotation 0.9999973309734044 0.0023025591360035197 -0.00019044026042317025 0.0019217620850567757
   children [
     DEF Meat Group {
       children [
@@ -597,6 +702,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.5 0.3 0.3
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/beef.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -610,6 +720,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.5 0.3 0.3
+            baseColorMap ImageTexture {
+              url [
+                "textures/beef.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -628,12 +743,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -0.00011053100341800931 6.542708755126335e-05 -0.00011616728729392582
-  angularVelocity -0.0032958447114638783 -0.005561104458521395 1.0259445776019534e-07
 }
 Solid {
-  translation 1.4400007007433617 0.0598893547289609 0.839694842747078
-  rotation 0.9999966024545415 0.002576948703137504 -0.00039295642922989595 0.001885643615738481
+  translation 1.4400012108369455 0.05988654015989416 0.8396984937650305
+  rotation 0.9999920960583958 0.0039555507683640455 -0.0004017945432055043 0.001925615526469518
   children [
     DEF Meat Group {
       children [
@@ -642,6 +755,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.5 0.3 0.3
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/beef.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -655,6 +773,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.5 0.3 0.3
+            baseColorMap ImageTexture {
+              url [
+                "textures/beef.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -673,12 +796,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -0.00031825970796724244 0.0001778586067675228 -0.00011003459517463019
-  angularVelocity -0.0023660179951066167 -0.004885291117021528 2.1403097923984583e-06
 }
 Solid {
-  translation 1.44000133664244 0.05981528477767596 0.8795332382824932
-  rotation 0.9999749463589553 0.007072677303921874 -0.0002896379791367035 0.0018925389672172002
+  translation 1.4400018364858915 0.05981099997065427 0.8795368184506829
+  rotation 0.9999859755609685 0.005287372087972995 -0.0003039371341639852 0.00192548574306689
   children [
     DEF Meat Group {
       children [
@@ -687,6 +808,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.5 0.3 0.3
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/beef.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -700,6 +826,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.5 0.3 0.3
+            baseColorMap ImageTexture {
+              url [
+                "textures/beef.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -718,12 +849,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -0.0005034410341075384 0.00025907593383535225 -0.00010516333013016954
-  angularVelocity -0.001721213470248205 -0.00441757541855115 3.3953349910962593e-06
 }
 Solid {
-  translation 1.4400020930707609 0.05974065665924668 0.9194120165918851
-  rotation 0.9999499015348442 0.01000859085283912 -0.00015009862036353906 0.0018936109458325505
+  translation 1.440002392603116 0.05973512774706793 0.919415543758782
+  rotation 0.999979966009924 0.006327644081267173 -0.0001688169778110564 0.001922326184762166
   children [
     DEF Meat Group {
       children [
@@ -732,6 +861,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.5 0.3 0.3
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/beef.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -745,6 +879,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.5 0.3 0.3
+            baseColorMap ImageTexture {
+              url [
+                "textures/beef.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -763,12 +902,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -0.0006738097857437728 0.0003196847086671226 -0.00010151960427106055
-  angularVelocity -0.0013262249954860902 -0.004131771475406368 4.077335336674265e-06
 }
 Solid {
-  translation 1.440002947725909 0.059665845500940506 0.9593311786410764
-  rotation 0.9999312448184255 0.011725472630978001 -0.0001375770837326554 0.0018903956041444925
+  translation 1.4400029410128334 0.0596591997117448 0.9593346700797792
+  rotation 0.9999746465217341 0.007119093644952888 -0.00015754176413589296 0.001917066121184049
   children [
     DEF Meat Group {
       children [
@@ -777,6 +914,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.5 0.3 0.3
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/beef.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -790,6 +932,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.5 0.3 0.3
+            baseColorMap ImageTexture {
+              url [
+                "textures/beef.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -808,12 +955,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -0.0008358692582460849 0.0003686269451739087 -9.907585110579233e-05
-  angularVelocity -0.001131295781327887 -0.00399119105076048 4.375194542051465e-06
 }
 Solid {
-  translation 1.4400609701505938 0.06000524667756272 0.9992915061010017
-  rotation 0.897501190049299 0.01066964159687678 0.44088294660633737 0.002103380687157581
+  translation 1.440060612648329 0.05999753933984603 0.9992949901471879
+  rotation 0.8999202388418939 0.006305021509416107 0.43600895681914015 0.002126796397220993
   children [
     DEF Meat Group {
       children [
@@ -822,6 +967,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 0.5 0.3 0.3
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/beef.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -835,6 +985,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 0.5 0.3 0.3
+            baseColorMap ImageTexture {
+              url [
+                "textures/beef.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -853,12 +1008,10 @@ Solid {
   physics Physics {
     density 500
   }
-  linearVelocity -0.0009944812328829791 0.0004125999758911275 -9.804170433007917e-05
-  angularVelocity -0.0010723981142138324 -0.00394911252357495 4.456743481471642e-06
 }
 Solid {
-  translation 1.4400048079000487 -0.29999383297353965 0.7995486888759822
-  rotation -0.8813768820308461 0.4724108707785025 0.0016616232669137544 0.0004853237446138802
+  translation 1.44001 -0.299994 0.799543
+  rotation -0.8813768820294927 0.47241087078102684 0.0016616232669915058 0.00048532374461416066
   children [
     DEF Cheese Group {
       children [
@@ -867,6 +1020,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 1 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/chesse.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -880,6 +1038,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 1 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/chesse.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -897,12 +1060,10 @@ Solid {
   boundingObject USE Cheese
   physics Physics {
   }
-  linearVelocity 1.0150992681131428e-06 1.5607286787085803e-06 6.959417816900901e-06
-  angularVelocity -7.996371355954968e-05 5.200865996533705e-05 -7.66652364034127e-12
 }
 Solid {
-  translation 1.4400145412428242 -0.2999784419587087 0.8391447534211187
-  rotation -0.8806935600784199 0.47368436401413805 0.0014058893697898743 0.0004916011240214461
+  translation 1.4400145412428247 -0.29997844195870865 0.8391447534211187
+  rotation -0.8806935600770289 0.4736843640167241 0.0014058893699639846 0.0004916011240215952
   children [
     DEF Cheese Group {
       children [
@@ -911,6 +1072,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 1 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/chesse.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -924,6 +1090,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 1 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/chesse.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -941,12 +1112,10 @@ Solid {
   boundingObject USE Cheese
   physics Physics {
   }
-  linearVelocity 3.030820673528164e-06 4.663665277098848e-06 6.887443481140129e-06
-  angularVelocity -7.579554233702027e-05 4.929853136182626e-05 6.775406350245635e-09
 }
 Solid {
-  translation 1.4400242772325866 -0.29996879139905486 0.8788216078546139
-  rotation -0.880355299725359 0.4743142609960375 0.0007266782342139792 0.0004957931679337348
+  translation 1.440024277232587 -0.2999687913990552 0.8788216078546139
+  rotation -0.8803552997238396 0.4743142609988577 0.0007266782341988559 0.0004957931679345696
   children [
     DEF Cheese Group {
       children [
@@ -955,6 +1124,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 1 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/chesse.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -968,6 +1142,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 1 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/chesse.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -985,12 +1164,10 @@ Solid {
   boundingObject USE Cheese
   physics Physics {
   }
-  linearVelocity 4.958152231615611e-06 7.629886117899386e-06 6.824188612961444e-06
-  angularVelocity -7.294748686115529e-05 4.744723820169699e-05 9.7063173068939e-09
 }
 Solid {
-  translation 1.4400340512932097 -0.29995145256474826 0.9185792456991355
-  rotation -0.8802714845425794 0.4744670771416648 -0.0017624442824151006 0.0004983509030484046
+  translation 1.44003405129321 -0.2999514525647481 0.9185792456991355
+  rotation -0.8802714845412302 0.4744670771441692 -0.00176244428224129 0.0004983509030488831
   children [
     DEF Cheese Group {
       children [
@@ -999,6 +1176,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 1 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/chesse.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1012,6 +1194,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 1 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/chesse.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1029,12 +1216,10 @@ Solid {
   boundingObject USE Cheese
   physics Physics {
   }
-  linearVelocity 6.830901867356778e-06 1.0511394802318904e-05 6.777887520844473e-06
-  angularVelocity -7.14210725732202e-05 4.6454808458057505e-05 1.1595956501380843e-08
 }
 Solid {
-  translation 1.4400439239458251 -0.29993317265271235 0.9584176695441545
-  rotation -0.8801953863650737 0.47460700185375326 -0.002067755553720328 0.0004993842733607513
+  translation 1.440043923945825 -0.29993317265271224 0.9584176695441545
+  rotation -0.8801953863636455 0.474607001856403 -0.0020677555535352646 0.0004993842733612743
   children [
     DEF Cheese Group {
       children [
@@ -1043,6 +1228,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 1 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/chesse.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1056,6 +1246,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 1 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/chesse.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1073,12 +1268,10 @@ Solid {
   boundingObject USE Cheese
   physics Physics {
   }
-  linearVelocity 8.679337702524212e-06 1.3354756237145452e-05 6.753742891445755e-06
-  angularVelocity -7.092430835903907e-05 4.613161955379453e-05 1.1594999484524215e-08
 }
 Solid {
-  translation 1.4400522035218706 -0.2999232328167605 0.9983368838464988
-  rotation -0.8801165823826759 0.47466384912054455 0.009435663893310726 0.0004996120152789639
+  translation 1.4400522035218712 -0.2999232328167605 0.9983368838464988
+  rotation -0.8801165823814378 0.47466384912283777 0.00943566389343128 0.0004996120152795391
   children [
     DEF Cheese Group {
       children [
@@ -1087,6 +1280,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 1 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/chesse.jpeg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1100,6 +1298,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 1 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/chesse.jpeg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1117,12 +1320,10 @@ Solid {
   boundingObject USE Cheese
   physics Physics {
   }
-  linearVelocity 1.052305754339091e-05 1.619016449638566e-05 6.752662756201998e-06
-  angularVelocity -7.091222719445978e-05 4.612205694566231e-05 1.1600417027295764e-08
 }
 Solid {
-  translation 1.4400025479819953 -0.6600233197392368 0.7995983952618502
-  rotation 0.9945340024490198 0.10441178964879576 0.0005442013125855302 0.0011974290141534686
+  translation 1.4400025479819953 -0.6600233197392368 0.7995983952618503
+  rotation 0.9945340024490205 0.10441178964878974 0.0005442013125633064 0.001197429014154059
   children [
     DEF Tomato Group {
       children [
@@ -1131,6 +1332,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/tomato.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1144,6 +1350,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/tomato.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1161,12 +1372,10 @@ Solid {
   boundingObject USE Tomato
   physics Physics {
   }
-  linearVelocity 5.537584184203601e-07 -2.1938178560923114e-06 8.544452857041744e-06
-  angularVelocity 0.00011210849055951626 2.8298210852343404e-05 -2.3085093690443572e-12
 }
 Solid {
-  translation 1.4400076026864772 -0.6600670121449759 0.8391944400366693
-  rotation 0.994389008342808 0.1057787837546127 0.0011614621826080227 0.0012009340958937268
+  translation 1.4400076026864772 -0.660067012144976 0.8391944400366693
+  rotation 0.994389008342839 0.1057787837543225 0.0011614621826092659 0.001200934095894608
   children [
     DEF Tomato Group {
       children [
@@ -1175,6 +1384,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/tomato.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1188,6 +1402,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/tomato.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1205,12 +1424,10 @@ Solid {
   boundingObject USE Tomato
   physics Physics {
   }
-  linearVelocity 1.6380594009088517e-06 -6.523714294804465e-06 8.420147876680669e-06
-  angularVelocity 0.00010374240295938533 2.6193405175974035e-05 -5.341613887769476e-09
 }
 Solid {
-  translation 1.440013010063457 -0.6601204338182449 0.8788712613514639
-  rotation 0.9942387030768427 0.10716383258446852 0.002305274362404624 0.0011975366563845347
+  translation 1.4400130100634572 -0.6601204338182448 0.8788712613514639
+  rotation 0.9942387030768175 0.10716383258469961 0.002305274362489862 0.001197536656385182
   children [
     DEF Tomato Group {
       children [
@@ -1219,6 +1436,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/tomato.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1232,6 +1454,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/tomato.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1249,12 +1476,10 @@ Solid {
   boundingObject USE Tomato
   physics Physics {
   }
-  linearVelocity 2.6530114342488134e-06 -1.0570556239519331e-05 8.303248575804088e-06
-  angularVelocity 9.798391613322824e-05 2.474558108571416e-05 -4.848716648033389e-09
 }
 Solid {
-  translation 1.4400182474726897 -0.6601664429872003 0.9186288784605424
-  rotation 0.994082176150911 0.10859327592221044 0.0028508741732365486 0.0011884936472699229
+  translation 1.44001824747269 -0.6601664429872001 0.9186288784605424
+  rotation 0.9940821761509341 0.10859327592199905 0.0028508741732810304 0.0011884936472708646
   children [
     DEF Tomato Group {
       children [
@@ -1263,6 +1488,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/tomato.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1276,6 +1506,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/tomato.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1293,12 +1528,10 @@ Solid {
   boundingObject USE Tomato
   physics Physics {
   }
-  linearVelocity 3.624821868888098e-06 -1.4438570974393803e-05 8.213933126794813e-06
-  angularVelocity 9.49116394371882e-05 2.397298664701791e-05 -6.647528572668566e-09
 }
 Solid {
-  translation 1.4400234556029148 -0.6602106434769635 0.9584672835818762
-  rotation 0.993922327038087 0.11004311591848574 0.0029867129330883183 0.0011758074453147788
+  translation 1.4400234556029148 -0.6602106434769633 0.958467283581876
+  rotation 0.9939223270381017 0.11004311591835193 0.0029867129331161957 0.0011758074453156828
   children [
     DEF Tomato Group {
       children [
@@ -1307,6 +1540,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/tomato.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1320,6 +1558,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/tomato.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1337,12 +1580,10 @@ Solid {
   boundingObject USE Tomato
   physics Physics {
   }
-  linearVelocity 4.577594158938446e-06 -1.8223838387651554e-05 8.16720129126584e-06
-  angularVelocity 9.399686986749922e-05 2.374300468302152e-05 -7.100404882859093e-09
 }
 Solid {
-  translation 1.4400285527597085 -0.6597799991756694 0.9983870278094271
-  rotation 0.9938430674915116 0.11078430523594072 0.0016717991664100388 0.001168708920938759
+  translation 1.4400285527597085 -0.6597799991756699 0.9983870278094271
+  rotation 0.9938430674915243 0.11078430523582646 0.0016717991664420171 0.0011687089209395929
   children [
     DEF Tomato Group {
       children [
@@ -1351,6 +1592,11 @@ Solid {
             Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/tomato.jpg"
+                  ]
+                }
                 roughness 0.5
                 metalness 0.2
               }
@@ -1364,6 +1610,11 @@ Solid {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            baseColorMap ImageTexture {
+              url [
+                "textures/tomato.jpg"
+              ]
+            }
             roughness 0.5
             metalness 0.2
             textureTransform TextureTransform {
@@ -1381,190 +1632,28 @@ Solid {
   boundingObject USE Tomato
   physics Physics {
   }
-  linearVelocity 5.526904601712237e-06 -2.1988591400410828e-05 8.207324711812392e-06
-  angularVelocity 9.40309459333151e-05 2.375212318077419e-05 -7.15502323683678e-09
 }
 DEF pr2_robot Pr2 {
-  hidden linearVelocity_0 1.1038026901491018e-07 1.2380795877417432e-05 -4.1261422924902856e-07
-  hidden angularVelocity_0 0.0005162042317094843 7.861003214806755e-06 0.00025373685520163375
-  hidden position_2_0 7.965657716759799e-08
-  hidden position_2_1 8.006605264459886e-08
-  hidden position_2_2 -3.212988470479405e-08
-  hidden position_2_3 -3.2324945997684565e-08
-  hidden position_2_4 0.13207614146768382
-  hidden position_2_5 -2.0945155184220935e-12
-  hidden rotation_6 0 0 1 7.884953353001448e-08
-  hidden position_6_0 -1.864683170451477e-08
-  hidden position_6_1 -9.402462232342642e-09
-  hidden linearVelocity_6 -2.3645479035594498e-05 1.0395531678400077e-06 4.870996404844915e-05
-  hidden angularVelocity_6 0.0005099047868368768 5.2218579264942225e-06 0.0002525834237885779
-  hidden linearVelocity_7 -1.1019207650850395e-05 -2.7712029433508628e-05 2.458345208259589e-05
-  hidden angularVelocity_7 0.0005075748078499175 3.41776108822019e-06 0.0002525686755575013
-  hidden linearVelocity_8 -3.2698349824106726e-06 -2.7711662984202747e-05 7.928348925883325e-06
-  hidden angularVelocity_8 0.0005075726787326475 4.6419666237599405e-06 0.0002525676143951874
-  hidden rotation_9 0 0 1 7.884953353001448e-08
-  hidden position_9_0 -6.477075910240964e-09
-  hidden position_9_1 2.826355111775433e-09
-  hidden linearVelocity_9 2.458890118906604e-05 1.0417651221874954e-06 -5.055574949177769e-05
-  hidden angularVelocity_9 0.000509896356564545 1.0471101771921382e-05 0.0002525583041117743
-  hidden linearVelocity_10 4.401719211717491e-06 -2.7711113951988944e-05 -8.501709672263369e-06
-  hidden angularVelocity_10 0.0005075621542731112 1.1036733263640639e-05 0.000252541508736279
-  hidden linearVelocity_11 1.2150322224811206e-05 -2.7710747482045767e-05 -2.51565373957879e-05
-  hidden angularVelocity_11 0.0005075600251904371 1.2260817213511583e-05 0.00025254044767880206
-  hidden rotation_12 0 0 -1 2.9802322387695313e-08
-  hidden position_12_0 -4.598463451075135e-09
-  hidden position_12_1 4.604675936297019e-09
-  hidden linearVelocity_12 -2.364015391671767e-05 -4.726704023891259e-05 5.02221511377116e-05
-  hidden angularVelocity_12 0.0005151439206175719 5.221618422143788e-06 0.0002527084093487747
-  hidden linearVelocity_13 -1.1013449754156667e-05 -4.316659014502677e-05 2.5173354589414208e-05
-  hidden angularVelocity_13 0.0005154418883805494 3.418438553986281e-06 0.0002526936440060958
-  hidden linearVelocity_14 -3.261852867836996e-06 -4.316622053844891e-05 8.347123916962849e-06
-  hidden angularVelocity_14 0.0005154397373936935 4.642995460529207e-06 0.00025269258222613633
-  hidden rotation_15 0 0 -1 2.9802322387695313e-08
-  hidden position_15_0 7.594914901540024e-09
-  hidden position_15_1 1.6809819122753217e-08
-  hidden linearVelocity_15 2.4594225339999063e-05 -4.726482901112393e-05 -4.904356240408645e-05
-  hidden angularVelocity_15 0.0005151355032338897 1.0470861884271943e-05 0.00025270454697560855
-  hidden linearVelocity_16 4.407188601243304e-06 -4.316567574135424e-05 -7.911806948583972e-06
-  hidden angularVelocity_16 0.0005154292473946853 1.1037364986937732e-05 0.0002526877339389582
-  hidden linearVelocity_17 1.2158589941448375e-05 -4.316530613829593e-05 -2.473776264119022e-05
-  hidden angularVelocity_17 0.0005154270964396017 1.2261891002678185e-05 0.0002526866721698338
-  hidden translation_18 -0.05 0 0.8717511414676837
-  hidden position_18_0 0.017306212607513086
-  hidden position_18_1 1.2359219331149875e-11
-  hidden position_18_2 6.4241229649544e-05
-  hidden position_18_3 6.432102329874016e-05
-  hidden linearVelocity_18 5.2805117242147475e-05 -0.00039539370518988355 0.07187072503262394
-  hidden angularVelocity_18 0.0006344610948750408 9.171333969939476e-06 0.0003203292080145421
-  hidden rotation_23 0 0 1 0.01730621260750043
-  hidden position_23_0 1.467722734789458e-06
-  hidden linearVelocity_23 5.6780130113791935e-05 -0.0006057105980526053 0.07187094649016552
-  hidden angularVelocity_23 0.0006123704370861252 9.734478970443126e-06 -0.024361482707512983
-  hidden rotation_24 0 0.9999999999999999 0 1.4675941767985115e-06
-  hidden linearVelocity_24 -9.673346088779543e-06 -0.0027935120704911704 0.07186842520135447
-  hidden angularVelocity_24 0.0006087180628374932 9.880222603839611e-06 -0.024280946263539376
-  hidden linearVelocity_38 5.486214296286498e-05 -0.0005068728094422912 0.07186984310663778
-  hidden angularVelocity_38 0.0006344594506824227 9.17161399323598e-06 0.00032032876485798883
-  hidden rotation_41 0 0 1 6.424122693680572e-05
-  hidden position_41_0 6.119840745064963e-05
-  hidden linearVelocity_41 0.00010905801183365467 -0.00037606359477730547 0.07175900916262298
-  hidden angularVelocity_41 0.0007236986079527531 8.470698200436626e-06 0.0009566176738430225
-  hidden rotation_42 0 1 0 6.119840686904801e-05
-  hidden position_42_0 4.901810543932444e-05
-  hidden linearVelocity_42 0.00010741026853299969 -0.00027798761184058714 0.07176084889013863
-  hidden angularVelocity_42 0.0008133368965876678 8.166741153360326e-06 0.0009496314385436765
-  hidden rotation_43 1 0 0 4.9018107553028926e-05
-  hidden linearVelocity_43 0.00010600189749310172 -0.0002769993421591865 0.07176302633028216
-  hidden angularVelocity_43 0.0014053894414997586 7.6087379345225146e-06 0.0009422377415466387
-  hidden position_44_0 2.032907845205248e-05
-  hidden rotation_45 0 1 0 2.0329072655850928e-05
-  hidden position_45_0 1.6581394702473155e-05
-  hidden linearVelocity_45 0.00010511008966470839 9.838070827756854e-05 0.07176103969878873
-  hidden angularVelocity_45 0.0014951091014871925 1.1064938864378185e-05 0.0009361989930718431
-  hidden rotation_46 1 0 0 1.6581397264618753e-05
-  hidden linearVelocity_46 0.00010451148598496724 0.00010965829734357884 0.07176134200300048
-  hidden angularVelocity_46 0.0017595282473714747 1.0944527854170298e-05 0.000930002326719448
-  hidden position_47_0 8.406097313696039e-06
-  hidden rotation_48 0 1 0 8.406104144788256e-06
-  hidden position_48_0 1.4224332379237787
-  hidden linearVelocity_48 0.00010395204168770782 0.0003936840012616763 0.07175825237672698
-  hidden angularVelocity_48 0.0018519887302491937 1.1874545621542844e-05 0.0009258946850970422
-  hidden rotation_49 1 0 0 1.422433237923779
-  hidden linearVelocity_49 0.00011017655926165909 0.00020990321816201688 0.07000991028232224
-  hidden angularVelocity_49 0.1947640730524826 1.0166904626084805e-05 0.0007346164813390038
-  hidden position_50_0 1.5639695360105698e-10
-  hidden position_50_1 0.19999995962312445
-  hidden position_50_2 0.20000089191406417
-  hidden translation_56 0.16828000015639696 0 0
-  hidden linearVelocity_56 0.00010357450267975623 0.000547535450089088 0.07175611005577084
-  hidden angularVelocity_56 0.1947641037943499 1.0166829767561094e-05 0.0007346140602006821
-  hidden rotation_57 0 0 1 0.19999995962312472
-  hidden position_57_0 0.19999999742503666
-  hidden linearVelocity_57 0.00010254505861215686 -0.0014633276508309975 0.07204578200416008
-  hidden angularVelocity_57 0.19476407957615957 1.0135963861330035e-05 0.0007346053575911348
-  hidden rotation_58 0 0 -0.9999999999999999 0.19999999742503688
-  hidden linearVelocity_58 0.00010020570515692289 -0.005812810715452773 0.07270835907355652
-  hidden angularVelocity_58 0.19476407982255162 1.0166375984558006e-05 0.000734601395737282
-  hidden rotation_59 0 0 -1 0.20000089191406328
-  hidden position_59_0 0.19999999605240198
-  hidden linearVelocity_59 0.0001044860326494355 0.002389790735990402 0.07146884458258593
-  hidden angularVelocity_59 0.19479463050135093 1.0192460321615864e-05 0.0007331387341561035
-  hidden rotation_60 0 0 0.9999999999999999 0.19999999605240198
-  hidden position_60_0 -9.659745860186447e-06
-  hidden linearVelocity_60 0.00010672267162219767 0.006903709993227524 0.07080413023707399
-  hidden angularVelocity_60 0.19482522539557418 1.0143067667361678e-05 0.0007318256423761451
-  hidden translation_61 0 -9.659745860186447e-06 0
-  hidden linearVelocity_61 0.00010663523862577976 0.006903917414316599 0.07080397927045518
-  hidden angularVelocity_61 0.19485582000764873 1.0127951501753532e-05 0.000730508014608048
-  hidden rotation_65 0 0 1 6.432102066273104e-05
-  hidden position_65_0 6.128718133784876e-05
-  hidden linearVelocity_65 -4.3647928863963106e-06 -0.000375995187742812 0.07198129979186088
-  hidden angularVelocity_65 0.0007308492983758848 1.1264225433986866e-05 0.000957054506838658
-  hidden rotation_66 0 1 0 6.128718440019602e-05
-  hidden position_66_0 4.90576693681795e-05
-  hidden linearVelocity_66 -3.118554658569799e-06 -0.00027780574510989414 0.07197615929970967
-  hidden angularVelocity_66 0.0008276177922072454 1.300845848409434e-05 0.0009501212399668012
-  hidden rotation_67 1 0 0 4.90576734017867e-05
-  hidden linearVelocity_67 -2.0615349383117657e-06 -0.00027674911770027505 0.071972627708379
-  hidden angularVelocity_67 0.0014216686134171565 1.458227572703328e-05 0.0009427828691858874
-  hidden position_68_0 2.0346174672626896e-05
-  hidden rotation_69 0 1 0 2.034617012485404e-05
-  hidden position_69_0 1.6550260390795862e-05
-  hidden linearVelocity_69 -1.4236114480727866e-06 9.892052876866653e-05 0.0719643009084331
-  hidden angularVelocity_69 0.0015185176083186405 1.699986908089467e-05 0.0009367728832248878
-  hidden rotation_70 1 0 0 1.6550273716824826e-05
-  hidden linearVelocity_70 -6.965065705525085e-07 0.00010997963408988986 0.07196145999210518
-  hidden angularVelocity_70 0.0017849483254850926 1.7573829268155212e-05 0.0009306096010587692
-  hidden position_71_0 1.0374285243032888e-05
-  hidden rotation_72 0 1 0 1.0374290731699382e-05
-  hidden position_72_0 1.4247451299196847
-  hidden linearVelocity_72 -6.397272125663339e-07 0.0003945565154533093 0.07195484296251763
-  hidden angularVelocity_72 0.0018844476350038156 1.8290910121911082e-05 0.0009265106093906888
-  hidden rotation_73 1 0 0 1.4247451299196847
-  hidden linearVelocity_73 5.972046156097136e-06 0.00017869783424523183 0.0699657045891055
-  hidden angularVelocity_73 0.22132586997568185 1.636244587408682e-05 0.0007090532964338994
-  hidden position_74_0 2.570008102360469e-10
-  hidden position_74_1 0.19999995960904646
-  hidden position_74_2 0.2000008921686262
-  hidden translation_79 0.16828000025700082 0 0
-  hidden position_79_0 4.7152503866094165e-11
-  hidden linearVelocity_79 -4.0906545451907224e-07 0.0005485859928549934 0.07195016667610343
-  hidden angularVelocity_79 0.22132590630638382 1.6362573483019526e-05 0.0007090495547476745
-  hidden linearVelocity_80 -4.0841136239564454e-07 0.0005485793620580492 0.07195016530215614
-  hidden angularVelocity_80 0.22132590961419396 1.6362560350520267e-05 0.0007090493514756739
-  hidden rotation_81 0 0 0.9999999999999999 0.19999995960904585
-  hidden position_81_0 0.19999999742507482
-  hidden linearVelocity_81 -1.2970293583819615e-06 -0.0017256096197925885 0.07227586454022009
-  hidden angularVelocity_81 0.2213258768267422 1.6332873368308994e-05 0.0007090414041732713
-  hidden rotation_82 0 0 -1 0.19999999742507468
-  hidden linearVelocity_82 -3.3743077103415942e-06 -0.006680646446629016 0.07301952427033863
-  hidden angularVelocity_82 0.22132587709264523 1.6363295961641133e-05 0.0007090375174840986
-  hidden rotation_83 0 0 -1 0.20000089216862516
-  hidden position_83_0 0.19999999614088645
-  hidden linearVelocity_83 5.681736459957879e-07 0.0026541364041825517 0.07162757001363405
-  hidden angularVelocity_83 0.2213587749707583 1.6407950631940046e-05 0.0007075726912167525
-  hidden rotation_84 0 0 1 0.1999999961408854
-  hidden position_84_0 -9.663799256580182e-06
-  hidden linearVelocity_84 2.700711554074164e-06 0.007773870200839382 0.07088023429530868
-  hidden angularVelocity_84 0.22139171632220603 1.6350626657478273e-05 0.0007062572154412354
-  hidden translation_85 0 -9.663799256580182e-06 0
-  hidden linearVelocity_85 2.7597319477073784e-06 0.007774323192912533 0.07087974331316964
-  hidden angularVelocity_85 0.2214246573825327 1.6327367412844284e-05 0.000704937327947281
-  hidden linearVelocity_89 5.566864341386896e-06 -0.0003830280251047614 7.362063627738281e-07
-  hidden angularVelocity_89 0.0005162038546275412 7.86099780297558e-06 0.0002537366484958735
-  translation 5.056119393338776e-07 2.5551119896125396e-07 -0.00011562879594209652
-  rotation 0.038785853053688805 0.9992427245634694 0.0031040312292615496 0.0006420598146227793
+  translation 5.146609477488587e-07 -3.0881013028503613e-07 -0.00011561460129667911
+  rotation -0.0062099572241480095 0.9999763587258684 0.0029526971784372452 0.0006409846524255543
   controller "pr2"
   supervisor TRUE
 }
 WoodenChair {
-  translation -2.029999720673913 2.363729187561262e-10 -0.0008222396676043631
-  rotation 0.000849692293292726 -0.9999996390114307 -1.2155572825045285e-07 0.0005631982388708346
+  translation -2.0299997206739127 0.05000000023637293 -0.0008222396676043631
+  rotation 0.0008496922932718311 -0.9999996390114309 -1.2155573263702477e-07 0.0005631982388707787
   physics Physics {
   }
 }
-Floor {
-  appearance Parquetry {
-    type "light strip"
-  }
+Fork {
+  translation -1.8100087736788355 0.19999999999997486 0.7811535478340206
+  rotation 6.677118788356042e-12 -1 9.956405539514886e-10 0.006986265946295967
+}
+Knife {
+  translation -1.8300899581093621 -0.10999992902756732 0.785843845372307
+  rotation -0.0019173315532188529 -0.999998159833992 6.456271918723672e-05 0.009937809467324461
+}
+Can {
+  translation -1.7100000000790054 -0.22 0.8410656512849675
+  rotation -0.07542642225237758 -0.9971505625758318 0.0012690078440569658 2.6856017843524958e-14
 }
